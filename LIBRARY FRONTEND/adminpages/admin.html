@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="../node_modules/mdbootstrap/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../node_modules/mdbootstrap/css/mdb.min.css" />
+    <link rel="stylesheet" href="../node_modules/mdbootstrap/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css"
+    />
+
+    <!-- datepicker -->
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../css/chat.css" />
+    <title>Document</title>
+  </head>
+  <body style="background-color: #ffeda3">
+    <div class="loader" id="topLoading">
+      <div class="loader__element"></div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-2" style="background-color: #792c1a; max-width: 90px">
+          <div class="sticky-top" style="min-height: 100vh">
+            <img
+              class="m-2"
+              src="https://pdm.edu.ph/wp-content/uploads/2020/11/logo-1-150x150.png"
+              alt=""
+            />
+            <button
+              onclick="adminpage()"
+              style="
+                background-color: transparent;
+                border: none;
+                color: #ffeda3;
+                margin-top: 100px;
+              "
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="50"
+                height="50"
+                fill="currentColor"
+                class="bi bi-house-door-fill"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"
+                />
+              </svg>
+              <p>Home</p>
+            </button>
+            <button
+              onclick="bookpage()"
+              class="mt-3"
+              style="background-color: transparent; border: none; color: white"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="50"
+                height="50"
+                fill="currentColor"
+                class="bi bi-book-fill"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"
+                />
+              </svg>
+              <p>Books</p>
+            </button>
+            <button
+              onclick="userpage()"
+              class="mt-3"
+              style="background-color: transparent; border: none; color: white"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="50"
+                height="50"
+                fill="currentColor"
+                class="bi bi-people-fill"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
+                />
+                <path
+                  fill-rule="evenodd"
+                  d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"
+                />
+                <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
+              </svg>
+              <p>Users</p>
+            </button>
+          </div>
+        </div>
+        <div class="col p-0">
+          <div
+            class="d-flex flex-row-reverse row-fuild sticky-top shadow"
+            style="background-color: #ffeda3; height: 80px; z-index: 100"
+          >
+            <div class="p-2 align-self-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-arrow-down-short"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"
+                />
+              </svg>
+            </div>
+            <div class="p-2 align-self-center" id="navName"></div>
+            <img
+              class="rounded-circle p-2 align-self-center"
+              alt="100x100"
+              id="avatar"
+              height="60"
+              src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
+              data-holder-rendered="true"
+            />
+          </div>
+
+          <!-- card container -->
+          <div class="row-fuild d-flex justify-content-center mt-3">
+            <div
+              class="card w-100 bg-white text-dark shadow p-3 mb-5 rounded"
+              style="max-width: 1000px !important"
+            >
+              <div
+                class="p-3 mb-2 text-white rounded"
+                style="background-color: #792c1a"
+              >
+                <h2>REQUEST</h2>
+              </div>
+              <div class="card-body">
+                <div class="container">
+                  <table
+                    class="table"
+                    style="width: 100%"
+                    id="pendingdatatable"
+                  >
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>ID Number</th>
+                        <th>Pending Date</th>
+                        <th>Book Title</th>
+                        <th></th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                    <tfoot>
+                      <tr>
+                        <th>Name</th>
+                        <th>ID Number</th>
+                        <th>Pending Date</th>
+                        <th>Book Title</th>
+                        <th>Accept</th>
+                        <th>Reject</th>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end card container -->
+
+          <!-- card container -->
+          <div class="row-fuild d-flex justify-content-center mt-3">
+            <div
+              class="card w-100 bg-white text-dark shadow p-3 mb-5 rounded"
+              style="max-width: 1000px !important"
+            >
+              <div
+                class="p-3 mb-2 text-white rounded"
+                style="background-color: #792c1a"
+              >
+                <h2>RESERVATIONS</h2>
+              </div>
+              <div class="card-body">
+                <div class="container">
+                  <table
+                    class="table"
+                    style="width: 100%"
+                    id="reserveddatatable"
+                  >
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>ID Number</th>
+                        <th>Pick-up Date</th>
+                        <th>Book Title</th>
+                        <th></th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                    <tfoot>
+                      <tr>
+                        <th>Name</th>
+                        <th>ID Number</th>
+                        <th>Pick-up Date</th>
+                        <th>Book title</th>
+                        <th>ACCEPT</th>
+                        <th>REJECT</th>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end card container -->
+
+          <!-- card container -->
+          <div class="row-fuild d-flex justify-content-center mt-3">
+            <div
+              class="card w-100 bg-white text-dark shadow p-3 mb-5 rounded"
+              style="max-width: 1000px !important"
+            >
+              <div
+                class="p-3 mb-2 text-white rounded"
+                style="background-color: #792c1a"
+              >
+                <h2>BORROWED</h2>
+              </div>
+              <div class="card-body">
+                <div class="container">
+                  <table
+                    class="table"
+                    style="width: 100%"
+                    id="borroweddatatable"
+                  >
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>ID Number</th>
+                        <th>Return Date</th>
+                        <th>Book Title</th>
+                        <th></th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                    <tfoot>
+                      <tr>
+                        <th>Name</th>
+                        <th>ID Number</th>
+                        <th>Pick-up Date</th>
+                        <th>Book title</th>
+                        <th>ACCEPT</th>
+                        <th>REJECT</th>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end card container -->
+          <div class="row-fuild"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="adminModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <!-- Add .modal-dialog-centered to .modal-dialog to vertically center the modal -->
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalDateTitle"></h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div
+              id="date-picker-example"
+              class="
+                md-form md-outline
+                input-with-post-icon
+                datepickers
+                text-center
+              "
+            >
+              <input
+                placeholder="Select date"
+                type="text"
+                id="setDate"
+                class="form-control text-center"
+              />
+              <label for="example">Date</label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button onclick="sendNow()" type="button" class="btn btn-primary">
+              Save changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="messagesModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Messages</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="col">
+              <!-- DIRECT CHAT WARNING -->
+              <div class="box box-warning direct-chat direct-chat-warning">
+                <!-- /.box-header -->
+                <div class="box-body">
+                  <!-- Conversations are loaded here -->
+                  <div class="direct-chat-messages" id="messageBox"></div>
+                  <!--/.direct-chat-messages-->
+                  <!-- /.direct-chat-pane -->
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer" id="messageFooter"></div>
+                <!-- /.box-footer-->
+              </div>
+              <!--/.direct-chat -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script> -->
+    <script
+      type="text/javascript"
+      src="../node_modules/mdbootstrap/js/jquery.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="../node_modules/mdbootstrap/js/popper.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="../node_modules/mdbootstrap/js/bootstrap.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="../node_modules/mdbootstrap/js/mdb.min.js"
+    ></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="../js/admin.js"></script>
+    <script src="../js/pages.js"></script>
+    <script>
+      $(function () {
+        // INITIALIZE DATEPICKER PLUGIN
+        $(".datepickers").datepicker({
+          format: "yyyy-mm-dd",
+        });
+        $(".datepicker").addClass("w-100 d-flex justify-content-center");
+      });
+    </script>
+  </body>
+</html>

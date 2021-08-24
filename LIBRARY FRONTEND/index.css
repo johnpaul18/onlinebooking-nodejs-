@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.pcolor {
+  background-color: #f4ab01 !important;
+  color: white;
+}
+
+.hide {
+  display: none;
+}
+
+.grey-color {
+  color: white;
+}
+
+.map-container {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+}
+.map-container iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+#successMessage {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  z-index: 100;
+}
+
+.md-form > input[type="text"],
+.md-form > textarea {
+  color: white !important;
+}
+.md-form > input[type="text"]:focus:not([readonly]) + label,
+.md-form > textarea:focus:not([readonly]) + label {
+  color: yellow !important;
+}
+
+.md-form > input[type="text"]:focus:not([readonly]),
+.md-form > textarea:focus:not([readonly]) {
+  border-bottom: 1px solid yellow !important;
+  box-shadow: 0 1px 0 0 yellow !important;
+}
+
+/* signin */
+/* signin end */
+
+.links-sticky {
+  position: sticky;
+  top: 0;
+}
+
+.post-links {
+  list-style: none;
+}
+.post-link {
+  color: grey;
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+
+.navbar.navbar-8 .navbar-toggler-icon {
+  background-image: url("https://mdbcdn.b-cdn.net/img/svg/hamburger4.svg?color=1729B0");
+}
